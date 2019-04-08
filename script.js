@@ -8,7 +8,9 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 // calculate wages
-// factory function
+
+// Factory function
+// Functions which always returns an object called as Factory functions
 function createCircle(radius) {
   return {
     radius,
@@ -21,6 +23,8 @@ var circle = createCircle(1);
 circle.draw();
 
 // constructor function
+// Everytime we create object using `new` keyword, its associated constructor key-value and method is created.Causes redundancy. 
+// prototype will solve this problem
 function Circle(radius) {
   this.radius = radius;
   this.draw = function() {
@@ -32,6 +36,7 @@ circle.draw();
 
 console.log(circle);
 
+// closure : generate unique userid by persisting the previous user id
 function makeFunc() {
   var data = 1;
   function displayName() {
@@ -44,10 +49,11 @@ function makeFunc() {
 }
 
 var myFunc = makeFunc();
-console.log(myFunc());
+console.log(myFunc()); 
 console.log(myFunc());
 console.log(myFunc());
 
+// curry function
 function curry(x){
   var data = x + 1;
   return function(y){
@@ -139,3 +145,43 @@ child.addEventListener(
   },
   true
 );
+
+
+
+// async in for-loop and hoisting 
+// replacing let with var prints the last iterated value
+for (let i = 0; i < 3; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 10000);
+}
+
+// promise with async and await
+const preMovie = async () => {
+  const promiseCall = new Promise((resolve, reject) => {
+    setTimeout(function() {
+      reject("passed");
+    }, 1000);
+  });
+  let ticket = await promiseCall;
+  return ticket;
+};
+
+preMovie()
+  .then(res => {
+    console.log(res);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+  // call, apply and bind
+var person1 = { first: "karthik", last: "kumar" };
+var person2 = { first: "kkk", last: "kumar" };
+function greet(value) {
+  console.log(value + this.first + " " + this.last);
+}
+greet.call(person1, "hello");
+greet.apply(person1, ["hello"]);
+var bound = greet.bind(person1, ["hello"]);
+bound();
