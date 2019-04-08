@@ -185,3 +185,45 @@ greet.call(person1, "hello");
 greet.apply(person1, ["hello"]);
 var bound = greet.bind(person1, ["hello"]);
 bound();
+
+
+// -------------------------
+// ________________
+// inheritance
+const Animal =  {
+  eat : function() {
+    console.log(this.name + "is eating");
+  }
+}
+
+const Dog = Object.create(Animal, {
+  name: { value: "husky" },
+  color: { value: "white" }
+});
+Dog.bark = function() {
+  console.log(this.name + " is barking bow bow");
+};
+Dog.bark();
+console.log(Dog.eat());
+
+
+// composition __________
+const getEnergy = (state) => ({
+  eat : () => {
+    console.log(state.name + "is eating");
+  }
+})
+
+const Animal1 = (name, color) => {
+  let state = {
+    name,
+    color
+  }
+  return Object.assign(state,
+    getEnergy(state)
+    )
+}
+const Dog1 = Animal1("Husky", "brown");
+Dog1.eat()
+
+--------------------------------------------------
