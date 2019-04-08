@@ -117,3 +117,25 @@ for(let i=0;i<=5;i++){
   },1000)
   })(i);
 }
+
+//event delegation, capturing and propagation
+//useCapture is the second parameter to set capture else bubbling takes place
+var parent = document.getElementById("parent");
+parent.addEventListener(
+  "click",
+  function(e) {
+    e.stopPropagation();
+    console.log("parent clicked");
+  },
+  true
+);
+
+var child = document.getElementById("child");
+child.addEventListener(
+  "click",
+  function(e) {
+    e.stopPropagation();
+    console.log("child clicked");
+  },
+  true
+);
