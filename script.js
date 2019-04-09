@@ -262,3 +262,81 @@ function generatePyramid() {
     }
 }  
 generatePyramid(2);
+
+// ------------------------------------------
+
+// ways to check if the given object is array or not
+var arr = [];
+
+if( arr instanceof Array && arr.constructor === Array && Array.isArray(arr)){
+    console.log("its array");
+}
+
+// ------------------------HOC--------------------------------------------------------
+// curry function is also called as HOC
+// foreach,map,filter,reduce are also HOC
+// HOC is the function which takes one argument at a time and produces a function
+// used to reuse the functionality
+import React from "react";
+import { render } from "react-dom";
+const hoc = (WrappedComponent) => (props) => {
+  return (
+    <div>
+      <WrappedComponent {...props}>
+        {props.children.toUpperCase()}
+      </WrappedComponent>
+    </div>
+  )
+}
+const Username = (props) => (
+  <div>{props.children}</div>
+)
+const UpperCase = hoc(Username);
+const App = () => 
+  <div>
+<UpperCase>karthik</UpperCase>
+  </div>
+render(<App />, document.getElementById("root"));    //KARTHIK
+
+// ----------------------------------------------------------------------------------------
+
+// example for callbacks
+// Passing functions as a parameter to other function is the fundamental paradigm of functional programming
+// A callback function is the function which is passed as a argument to another function, it executes when certain condition is met.
+
+ // global variable
+var allUserData = [];
+
+// generic logStuff function that prints to console
+function logStuff (userData) {
+    if ( typeof userData === "string")
+    {
+        console.log(userData);
+    }
+    else if ( typeof userData === "object")
+    {
+        for (var item in userData) {
+            console.log(item + ": " + userData[item]);
+        }
+
+    }
+
+}
+
+// A function that takes two parameters, the last one a callback function
+function getInput (options, callback) {
+    allUserData.push (options);
+    
+    callback (options);
+
+}
+
+// When we call the getInput function, we pass logStuff as a parameter.
+// So logStuff will be the function that will called back (or executed) inside the getInput function
+getInput ({name:"Rich", speciality:"JavaScript"}, logStuff);
+//  name: Rich
+// speciality: JavaScript
+
+
+// --------------------------------------------------------------------------------------
+
