@@ -7,7 +7,33 @@ document.getElementById("app").innerHTML = `
   <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
 </div>
 `;
-// calculate wages
+//
+// es5
+// functional prototype
+function Rectangle(x, y){
+  this.x = x;
+  this.y = y;
+}
+
+Rectangle.prototype.perimeter = function(){
+  return this.x.toString();
+}
+var rect = new Rectangle(2,5);
+console.log(rect.perimeter());
+
+// es6
+// class prototype 
+class Rectangle1{
+ constructor(x,y){
+   this.x = x;
+   this.y = y;
+ }
+ perimeter1(){
+   return this.x*this.y;
+ }
+}
+var rect1 = new Rectangle1(5,6);
+console.log(rect1.perimeter1());
 
 // Factory function
 // Functions which always returns an object called as Factory functions
