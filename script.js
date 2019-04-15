@@ -364,5 +364,133 @@ getInput ({name:"Rich", speciality:"JavaScript"}, logStuff);
 // speciality: JavaScript
 
 
-// --------------------------------------------------------------------------------------
+// ------------------------------------Generators and yield functions--------------------------------------------------
+
+// Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
+
+// Generators in JavaScript -- especially when combined with Promises -- are a very powerful tool for asynchronous programming as they mitigate -- if not entirely eliminate -- the problems with callbacks, such as Callback Hell and Inversion of Control.
+
+// Calling a generator function does not execute its body immediately; 
+// an iterator object for the function is returned instead. 
+// When the iterator's next() method is called, the generator function's body is executed until the first yield expression, 
+// which specifies the value to be returned from the iterator or, with yield*, delegates to another generator function. 
+// The next() method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value, as a boolean. 
+// Calling the next() method with an argument will resume the generator function execution, replacing the yield expression where execution was paused with the argument from next().
+
+// A return statement in a generator, when executed, will make the generator finished 
+// (i.e the done property of the object returned by it will be set to true). 
+// If a value is returned, it will be set as the value property of the object returned by the generator.
+// Much like a return statement, an error thrown inside the generator will make the generator finished 
+// -- unless caught within the generator's body.
+// When a generator is finished, subsequent next calls will not execute any of that generator's code, 
+// they will just return an object of this form: {value: undefined, done: true}.
+
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+var gen = generator(10);
+
+console.log(gen.next().value);
+// expected output: 10
+
+console.log(gen.next().value);
+// expected output: 20
+
+console.log(gen.next().value);
+// expected  output : undefined
+// As there is no action to resume or pause in the generator, the returned iterator is {value:undefined,done:true}.
+// we can perform certain actions until the iterator key property returns {value:undefined,done:true}
+
+// --------------------------------------------yield-----------------------------------------
+// The yield keyword is used to pause and resume a generator function
+function* foo(index) {
+  while (index < 2) {
+    yield index++;
+  }
+}
+
+const iterator = foo(0);
+
+console.log(iterator.next().value);
+// expected output: 0
+
+console.log(iterator.next().value);
+// expected output: 1
+
+// ------------------------------------------redux saga----------------------------
+// sagas >
+//    |----index.js 
+
+//-----1----- takeLatest : debounces the event meaning 
+//----------- Return a function, that, as long as it continues to be invoked, will
+// not be triggered. The function will be called after it stops being 
+// called for `wait` milliseconds. If `immediate` is passed, trigger the 
+// function on the leading edge, instead of the trailing.
+
+// -----------debounce/takeLatest usecase-------------
+// Remember, the `debounce` method is intended for use on events
+// that rapidly fire, ie: a window resize or scroll. The *first* 
+// time the event fires, the `timeout` variable has been declared, 
+// but no value has been assigned to it - it is `undefined`. 
+// Therefore, nothing is removed from JavaScript's execution queue 
+// because nothing has been placed in the queue - there is nothing 
+// to clear.
+
+
+//-----2----- takeEvery :  Spawns a saga on each action dispatched to the Store that matches pattern
+//----------- takeEvery to start a new fetchUser task on each dispatched USER_REQUESTED action:
+import { put, call, takeLatest, takeEvery } from "redux-saga/effects";
+import { delay } from "redux-saga";
+
+export function* incrementAsync() {
+  yield call(delay, 1000);  //delays the 'INCREMENT' action by 1 second
+  yield put({ type: "INCREMENT" }); //dipatches an action
+}
+export function* randomCHAR() {
+  yield put({ type: "RANDOM" });  //dispatches an action
+}
+
+//sagaMiddleware syncs the changes occured in the rootSaga
+// rootSaga is the generator function which always watches for an action to dispatch from the component
+export default function* rootSaga() {
+  yield takeLatest("INCREMENT_ASYNC", incrementAsync);
+  yield takeEvery("RANDOM_CHAR", randomCHAR); 
+}
+
+// ----------------index.js with redux store--------------
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import sagaMonitor from "./sagaMonitor";
+
+import Counter from "./components/Counter";
+import reducer from "./reducers";
+import rootSaga from "./sagas";
+
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+
+const action = type => store.dispatch({ type });
+
+function render() {
+  ReactDOM.render(
+    <Counter
+      value={store.getState().count}
+      char={store.getState().char}
+      rand={() => action("RANDOM_CHAR")}
+      onIncrement={() => action("INCREMENT")}
+      onDecrement={() => action("DECREMENT")}
+      onIncrementIfOdd={() => action("INCREMENT_IF_ODD")}
+      onIncrementAsync={() => action("INCREMENT_ASYNC")}
+    />,
+    document.getElementById("root")
+  );
+}
+
+render();
+store.subscribe(render);
 
