@@ -330,7 +330,7 @@ render(<App />, document.getElementById("root"));    //KARTHIK
 // Passing functions as a parameter to other function is the fundamental paradigm of functional programming
 // A callback function is the function which is passed as a argument to another function, it executes when certain condition is met.
 
- // global variable
+    // global variable
 var allUserData = [];
 
 // generic logStuff function that prints to console
@@ -452,7 +452,7 @@ export function* randomCHAR() {
   yield put({ type: "RANDOM" });  //dispatches an action
 }
 
-//sagaMiddleware syncs the changes occured in the rootSaga
+// sagaMiddleware syncs the changes occured in the rootSaga
 // rootSaga is the generator function which always watches for an action to dispatch from the component
 export default function* rootSaga() {
   yield takeLatest("INCREMENT_ASYNC", incrementAsync);
@@ -493,4 +493,6 @@ function render() {
 
 render();
 store.subscribe(render);
+// -----------------------------------------------------------------------------------
+// https://github.com/iamshaunjp/object-oriented-js
 
