@@ -496,3 +496,44 @@ store.subscribe(render);
 // -----------------------------------------------------------------------------------
 // https://github.com/iamshaunjp/object-oriented-js
 
+
+
+// -------------------------------------------------------------------------------------
+
+var a = "noon";
+var palin;
+let n = a.length - 1;
+for (let x = 0; x <= a.length - 1; x++) {
+  if (a[x] === a[n]) {
+    palin = true;
+  } else {
+    palin = false;
+  }
+  n--;
+}
+console.log(palin, "palin");
+// malayalam -- true
+// english -- true
+// ----------------------------------------------------------
+
+// score board of two players
+var a =[3,6,1];
+var b = [9,2,4];
+var winnerA = [];
+var winnerB = [];
+for(let i=0;i<a.length;i++){
+    for(let j=0;j<b.length;j++){
+        if(a[i] > b[i]){
+            winnerA[i] = 1;
+            winnerB[i] = 0;
+        }else{
+          winnerA[i] = 0;
+          winnerB[i] = 1;
+        }
+    }
+}
+console.log(winnerA); // [0,1,0]
+console.log(winnerB); // [1,0,1]
+
+// ------------------------------------------------------------------------------------------
+
