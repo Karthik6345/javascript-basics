@@ -499,7 +499,7 @@ store.subscribe(render);
 
 
 // -------------------------------------------------------------------------------------
-
+// palindrome without using in-built functions
 var a = "noon";
 var palin;
 let n = a.length - 1;
