@@ -559,8 +559,11 @@ for (var i = 0; i < arr.length; i++) {
 const arr = [10, 12, 15, 21];
 for (var i = 0; i < arr.length; i++) {
   setTimeout(function() {
-    console.log('Index: ' + i + ', element: ' + arr[i]);
-  }(i), 3000);  //using Immediately invoked function expression(IIFE), persisting the value of i in the callback function
+    console.log('Index: ' + i + ', element: ' + arr[i]); 
+  }(i), 3000);  
+  //you need to create a new function which invokes itself at runtime.
+  //using Immediately invoked function expression(IIFE), persisting the value of i in the callback function
+  
 }
 
 // ----Approach 2-----
