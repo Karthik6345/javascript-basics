@@ -1,0 +1,18 @@
+// promise with async and await
+const preMovie = async () => {
+  const promiseCall = new Promise((resolve, reject) => {
+    setTimeout(function() {
+      reject("passed");
+    }, 1000);
+  });
+  let ticket = await promiseCall;
+  return ticket;
+};
+
+preMovie()
+  .then(res => {
+    console.log(res);
+  })
+  .catch(err => {
+    console.log(err);
+  });
