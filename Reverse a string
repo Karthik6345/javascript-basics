@@ -1,0 +1,13 @@
+//Approach -1
+var x = "hi";
+
+var y = x.split('').reverse().join('');
+console.log(y);  // ih
+
+//Approach 2
+
+var k="";
+for (let i = 0; i <= strLength; i++) {
+    k+=x[strLength-i];
+}
+console.log(k);
