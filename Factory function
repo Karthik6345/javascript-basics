@@ -10,3 +10,18 @@ function createCircle(radius) {
 }
 var circle = createCircle(1);
 circle.draw();
+
+
+// constructor function
+// Everytime we create object using `new` keyword, its associated constructor key-value and method is created.Causes redundancy. 
+// prototype will solve this problem
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function() {
+    console.log("draw");
+  };
+}
+var circle = new Circle(1);
+circle.draw();
+
+console.log(circle);
