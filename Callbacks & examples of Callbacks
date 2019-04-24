@@ -1,0 +1,36 @@
+// example for callbacks
+// Passing functions as a parameter to other function is the fundamental paradigm of functional programming
+// A callback function is the function which is passed as a argument to another function, it executes when certain condition is met.
+
+    // global variable
+var allUserData = [];
+
+// generic logStuff function that prints to console
+function logStuff (userData) {
+    if ( typeof userData === "string")
+    {
+        console.log(userData);
+    }
+    else if ( typeof userData === "object")
+    {
+        for (var item in userData) {
+            console.log(item + ": " + userData[item]);
+        }
+
+    }
+
+}
+
+// A function that takes two parameters, the last one a callback function
+function getInput (options, callback) {
+    allUserData.push (options);
+    
+    callback (options);
+
+}
+
+// When we call the getInput function, we pass logStuff as a parameter.
+// So logStuff will be the function that will called back (or executed) inside the getInput function
+getInput ({name:"Rich", speciality:"JavaScript"}, logStuff);
+//  name: Rich
+// speciality: JavaScript
