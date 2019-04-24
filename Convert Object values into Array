@@ -1,0 +1,16 @@
+// convert object values into array values
+// approach 1
+let x =  {
+  a : 1,
+  b : 6
+};
+
+let y = Object.values(x);
+console.log(y);
+
+// Approach 2
+var arr =[];
+for(let i in x){
+  arr.push(x[i])
+}
+console.log(arr);
