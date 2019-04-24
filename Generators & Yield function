@@ -1,0 +1,54 @@
+// ------------------------------------Generators and yield functions--------------------------------------------------
+
+// Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
+
+// Generators in JavaScript -- especially when combined with Promises -- are a very powerful tool for asynchronous programming as they mitigate -- if not entirely eliminate -- the problems with callbacks, such as Callback Hell and Inversion of Control.
+
+// Calling a generator function does not execute its body immediately; 
+// an iterator object for the function is returned instead. 
+// When the iterator's next() method is called, the generator function's body is executed until the first yield expression, 
+// which specifies the value to be returned from the iterator or, with yield*, delegates to another generator function. 
+// The next() method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value, as a boolean. 
+// Calling the next() method with an argument will resume the generator function execution, replacing the yield expression where execution was paused with the argument from next().
+
+// A return statement in a generator, when executed, will make the generator finished 
+// (i.e the done property of the object returned by it will be set to true). 
+// If a value is returned, it will be set as the value property of the object returned by the generator.
+// Much like a return statement, an error thrown inside the generator will make the generator finished 
+// -- unless caught within the generator's body.
+// When a generator is finished, subsequent next calls will not execute any of that generator's code, 
+// they will just return an object of this form: {value: undefined, done: true}.
+
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+var gen = generator(10);
+
+console.log(gen.next().value);
+// expected output: 10
+
+console.log(gen.next().value);
+// expected output: 20
+
+console.log(gen.next().value);
+// expected  output : undefined
+// As there is no action to resume or pause in the generator, the returned iterator is {value:undefined,done:true}.
+// we can perform certain actions until the iterator key property returns {value:undefined,done:true}
+
+// --------------------------------------------yield-----------------------------------------
+// The yield keyword is used to pause and resume a generator function
+function* foo(index) {
+  while (index < 2) {
+    yield index++;
+  }
+}
+
+const iterator = foo(0);
+
+console.log(iterator.next().value);
+// expected output: 0
+
+console.log(iterator.next().value);
+// expected output: 1
