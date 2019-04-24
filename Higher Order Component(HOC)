@@ -1,0 +1,25 @@
+// ------------------------HOC--------------------------------------------------------
+// curry function is also called as HOC
+// foreach,map,filter,reduce are also HOC
+// HOC is the function which takes one argument at a time and produces a function
+// used to reuse the functionality
+import React from "react";
+import { render } from "react-dom";
+const hoc = (WrappedComponent) => (props) => {
+  return (
+    <div>
+      <WrappedComponent {...props}>
+        {props.children.toUpperCase()}
+      </WrappedComponent>
+    </div>
+  )
+}
+const Username = (props) => (
+  <div>{props.children}</div>
+)
+const UpperCase = hoc(Username);
+const App = () => 
+  <div>
+<UpperCase>karthik</UpperCase>
+  </div>
+render(<App />, document.getElementById("root"));    //KARTHIK
