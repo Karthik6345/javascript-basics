@@ -1,0 +1,21 @@
+const obj = {
+  a:1,
+  b:2,
+  getA: function(){
+    console.log("value of a " + this.a)
+    //added this
+    //return entire this context 
+    return this;
+  },
+  getB:function(){
+    console.log("value of b " + this.b)
+    //added this
+    //return entire this context 
+    return this;
+  }
+
+}
+obj.getA().getB()
+
+value of a 1
+value of b 2
