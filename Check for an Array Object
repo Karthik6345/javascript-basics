@@ -1,0 +1,6 @@
+// ways to check if the given object is array or not
+var arr = [];
+
+if( arr instanceof Array && arr.constructor === Array && Array.isArray(arr)){
+    console.log("its array");
+}
