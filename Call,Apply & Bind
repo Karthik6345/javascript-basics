@@ -1,0 +1,10 @@
+  // call, apply and bind
+var person1 = { first: "karthik", last: "kumar" };
+var person2 = { first: "kkk", last: "kumar" };
+function greet(value) {
+  console.log(value + this.first + " " + this.last);
+}
+greet.call(person1, "hello");
+greet.apply(person1, ["hello"]);
+var bound = greet.bind(person1, ["hello"]);
+bound();
