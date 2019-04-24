@@ -1,0 +1,12 @@
+// Factory function
+// Functions which always returns an object called as Factory functions
+function createCircle(radius) {
+  return {
+    radius,
+    draw: function() {
+      console.log("draw");
+    }
+  };
+}
+var circle = createCircle(1);
+circle.draw();
