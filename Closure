@@ -14,3 +14,19 @@ var myFunc = makeFunc();
 console.log(myFunc());   //2
 console.log(myFunc());   //3
 console.log(myFunc());   //4
+
+
+//------Example 2
+
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  var data = function displayName() { // displayName() is the inner function, a closure
+     // use variable declared in the parent function
+     name = name + Math.random(1,100); 
+     console.log(name);  
+    }
+  return data;
+}
+var par = init();
+par();
+par();
