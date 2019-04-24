@@ -1,0 +1,16 @@
+// closure : generate unique userid by persisting the previous user id
+function makeFunc() {
+  var data = 1;
+  function displayName() {
+    var val =0;
+    data++;
+    val = data + val;
+    return val;
+  }
+  return displayName;
+}
+
+var myFunc = makeFunc();
+console.log(myFunc());   //2
+console.log(myFunc());   //3
+console.log(myFunc());   //4
