@@ -1,0 +1,9 @@
+// curry function
+function curry(x){
+  var data = x + 1;
+  return function(y){
+    let val = y + data;  
+    return val;
+  } 
+}
+console.log(curry(10)(12));  //23
