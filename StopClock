@@ -1,0 +1,39 @@
+function Watch(){
+  let start,end,running,duration=0;
+  this.start = function(){
+    if(running){
+      console.log("running already.Please stop to start watch!!")
+    }else{
+      running =1;
+      start = new Date();
+    }
+  this.end = function(){
+    if(running){
+      running = 0;
+      end = new Date();
+      duration = (end.getTime() - start.getTime())/1000;
+      console.log(duration);
+      return duration;
+    }else{
+      console.log("please start the watch");
+    }
+  }
+  } 
+  this.duration = function(){
+    if(running){
+        console.log("not set");
+    }else{
+      duration = (end.getTime() - start.getTime())/1000;
+      console.log(duration);
+      return duration;
+    }
+  }
+  this.reset = function(){
+    start = 0;
+    end = 0;
+    running = 0;
+    duration=0;
+  }
+}
+const myWatch = new Watch();
+myWatch.start();
