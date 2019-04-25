@@ -1,0 +1,34 @@
+
+// ways to Persisting the context 
+
+//Approach 1
+
+const obj = {
+  x:1,
+  getX(){
+    const that = this;
+      var inner = function(){
+        console.log(that.x);
+      }
+      inner();
+  }
+}
+
+obj.getX();
+
+//Approach 2 & 3
+
+const obj1 = {
+  x:1,
+  getX(){
+      var inner = function(){
+        console.log(this.x);
+      }
+      //
+      inner.call(this);
+      // and also
+      inner.bind(this)();
+  }
+}
+
+obj1.getX();
