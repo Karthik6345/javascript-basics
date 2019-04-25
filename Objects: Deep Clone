@@ -23,3 +23,9 @@ let clone = {
 clone.a.b.c = 2
 console.log(clone); // c=2
 console.log(obj);   // c=1
+
+
+---------HACK------------
+//to clone
+//this effects performace while copying giant object
+JSON.parse(JSON.stringify(obj));
