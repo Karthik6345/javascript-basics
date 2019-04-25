@@ -1,0 +1,18 @@
+const a = function(x){
+  this.x = x;
+  this.getX = function(){
+    return this.x;
+  }
+}
+
+const b = function(x,y){
+  this.y = y;
+  a.call(this,x)
+  this.getY = function(){
+    return this.y;
+  }
+}
+
+const B = new b('x','y');
+console.log(B.getX());   //x
+console.log(B.getY());   //y
