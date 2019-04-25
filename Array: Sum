@@ -1,0 +1,16 @@
+let arr = [1,2,5,7];
+// approach 1
+var k=0;
+for(let i=0;i<arr.length;i++){
+  k+=arr[i];
+}
+console.log(k);
+
+// approach 2
+const res = arr.reduce(function(accumulator,currentValue,currentIndex,array){
+ 
+   return accumulator +=currentValue;
+  
+},0)
+
+console.log(res);
