@@ -7,10 +7,17 @@ for(let i=0;i<arr.length;i++){
 console.log(k);
 
 // approach 2
+
+//ES5
 const res = arr.reduce(function(accumulator,currentValue,currentIndex,array){
  
    return accumulator +=currentValue;
   
 },0)
+
+console.log(res);
+
+//ES6
+const res = arr.reduce((accumulator,currentValue)=>accumulator + currentValue)
 
 console.log(res);
