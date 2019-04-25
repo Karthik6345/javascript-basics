@@ -1,0 +1,28 @@
+function quickSort(arr) {
+  if (arr.length < 2) {
+      return arr;
+  }
+  const pivot = arr[Math.floor(Math.random() * arr.length)];
+
+  let left = [];
+  let right = [];
+  let equal = [];
+
+  for(let value of arr){
+    if(value < pivot){
+      left.push(value)
+    }else if(value > pivot){
+      right.push(value)
+    }else{
+      equal.push(value)
+    }
+  }
+
+  return [
+    ...quickSort(left),
+    ...equal,
+    ...quickSort(right)
+  ]
+}
+var arr =[3,1,7,2,9];
+console.log(quickSort(arr));
