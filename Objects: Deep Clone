@@ -1,0 +1,25 @@
+
+const obj = {
+  a: {
+    b: {
+      c: 1
+    }
+  }
+};
+
+let clone = {
+  ...obj,
+  a:{
+    ...obj.a,
+    b:{
+      ...obj.b,
+      c:{
+        ...obj.c
+      }
+    }
+  }
+}
+
+clone.a.b.c = 2
+console.log(clone); // c=2
+console.log(obj);   // c=1
