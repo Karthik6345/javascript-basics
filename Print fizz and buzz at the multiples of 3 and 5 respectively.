@@ -1,0 +1,10 @@
+// write a program that prints the numbers 1 to 100
+//But for multiples of three print "Fizz" instead of the number 
+// and multiples of five prints "Buzz"
+//For numbers which are multiples of both three and five print "Fizzbuzz"
+
+var s=0;
+for(let i = 0;i<=100;i++){
+  s = ((i%3===0 && i%5===0) ? "FizzBuzz" : (i%3===0 ? "Fizz" : i%5===0 ? "Buzz" : i) )
+  console.log(s);
+}
