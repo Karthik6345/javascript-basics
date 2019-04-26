@@ -1,0 +1,12 @@
+
+// Find the count of the max number in an array
+
+var vale = [1,2,2,4,2,4];
+var data = Math.max.apply(null,vale);
+var count = 0;
+for(let i=0;i<vale.length;i++){
+  if(vale[i] === data){
+    count++;
+  }
+}
+console.log(count);
