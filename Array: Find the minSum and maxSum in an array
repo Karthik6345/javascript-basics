@@ -1,0 +1,12 @@
+let arr = [2, 5, 1, 7, 3];
+
+function findMinMaxSum(arr){
+  let minNumb = Math.min.apply(null,arr);
+  let maxNumb = Math.max.apply(null,arr);
+  let totalSum = arr.reduce((acc,cur)=>acc+cur)
+  let minSum=totalSum-minNumb;
+  let maxSum=totalSum-maxNumb;
+  return JSON.stringify({maxSum,minSum}); 
+}
+
+console.log(findMinMaxSum(arr));
