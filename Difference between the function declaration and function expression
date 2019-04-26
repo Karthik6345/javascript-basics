@@ -1,0 +1,16 @@
+//Function declaration will get hoisted, so the order of function call does not matter. 
+//Example: function declaration
+console.log(x());   //3
+function x(){
+  return 1+2;
+}
+console.log(x());   //3
+
+//Function expression will not get hoisted, so always the function call should be after the function call.
+//Example: function expression
+
+console.log(y());   //y is not a function
+let y = function(){
+  return 1+2;
+}
+console.log(y());   // 3
