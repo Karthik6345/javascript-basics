@@ -1,0 +1,12 @@
+// Example for method chaining
+
+const obj = {
+  a:function(){
+    return this;
+  },
+  b:function(){
+    return this;
+  }
+}
+
+console.log(obj.a().b().a().a()); // Object {a: function a(), b: function b()}
