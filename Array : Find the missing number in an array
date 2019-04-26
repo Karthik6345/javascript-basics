@@ -1,0 +1,33 @@
+
+//Approach 1
+let k =0;
+for(let i=1;i<arr.length;i++){
+  if(arr[i]-arr[i-1] !== 1){  // Also using array includes method 
+    k = arr[i-1] + 1;
+    break;
+  }
+}
+console.log(k);
+
+//Approach 2
+let arr = [1,2,4,6,3];
+let missingNumber = 0;
+let k=0;
+let value = 0;
+for(let i=0;i<=arr.length-1;i++){
+  k++;
+  if(k != arr[i]){
+    value = k;
+    break;
+  }else{
+    console.log("not found yet");
+  }
+ 
+}
+console.log(value);
+
+//Approach 3 -- yet best
+let arrLength = arr[arr.length-1];
+let total = arrLength*(arrLength+1)/2;
+const givenArray = arr.reduce((val,index)=>val+index);
+console.log(total - givenArray);
