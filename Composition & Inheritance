@@ -16,6 +16,8 @@ console.log(Dog.eat());
 
 
 // composition __________
+Composition makes the functions more granular, resusuable and open for new features without breaking the structure.
+import it and use that function, object, or a class, without extending it.
 const getEnergy = (state) => ({
   eat : () => {
     console.log(state.name + "is eating");
