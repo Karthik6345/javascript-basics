@@ -1,0 +1,19 @@
+//Object destructuring 
+var employee = {
+  'name' : 'Karthik',
+  'empID':"107555"
+}
+
+const {name, empID} = employee;
+
+Similarly for Arrays,
+var users = ["karthik","Kumar"]
+const [firstname,lastname] = users
+
+//here we are destucturing the object 
+if the values are empty for the expected keys then we can assign default values in the function declaration
+function fetchRepos({name="username",startDate="",endDate="",empID="0000"}){
+
+}
+
+fetchRepos(employee)
