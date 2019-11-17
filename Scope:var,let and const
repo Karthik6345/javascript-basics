@@ -1,0 +1,27 @@
+function getDate(){
+var date = new Date;
+  function formatDate(){
+    return date.toDateString.slice(4)
+  }
+  return formatDate();
+}
+
+console.log(getDate());
+
+If you do not specify the var keyword then the variable becomes the property of the global scope.When the js interpreter starts interpreting 
+it starts to find the variable declaration untill reaches the global scope.
+
+var vs let vs const
+
+var is a function scope
+default value will be undefined
+
+let
+let is a block scope
+outputs as reference error
+
+const 
+const is also a block scope
+outputs as reference error
+variable value cannot be changed whereas the object value can be changed
+
