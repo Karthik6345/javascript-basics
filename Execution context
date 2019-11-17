@@ -1,0 +1,17 @@
+Global execution context
+
+1)create a global object
+2)create an object called this
+3)set up memory space for variables and functions
+4)Assign variable declaration default value undefined while placing function declaration in memory.
+
+function execution context
+1)create an arguments object
+2)create an object called this.
+3)Set up memory for variable and function
+4)Assign variable declaration default value i.e., undefined while placing function declaration in memory.
+---------------------------
+
+closure scope
+Whenever there is a inner function then is closure scope which have the access to outer scope variables.
+
