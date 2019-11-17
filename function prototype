@@ -1,4 +1,49 @@
-//
+//Prototype is a property of every function that points to an object. 
+--------------------------------example 1-------------------------------
+
+const animalMethods={
+  eat(name){
+    console.log(this.name +"is eating");
+  }
+}
+function Animal(name, energy){
+var animal = Object.create(animalMethods);   // Inheritance
+animal.name = name;
+animal.energy = energy;
+return animal;
+}
+var leo = Animal("leo",4);
+leo.eat();
+
+        ------------using prototype-------------
+        --without using new keyword
+        //constructor function
+        function Animal(name, energy){
+              var animal=Object.create(Animal.prototype);
+              animal.name = name;
+              animal.energy = energy;
+              return animal;
+        }
+        Animal.prototype.eat = function(name){
+          console.log(this.name +" is eating");
+        }
+        var leo =  Animal("leo",5);
+        leo.eat();
+        
+        ------using new keyword
+        function Animal(name, energy){
+          this.name = name;
+          this.energy = energy;
+        }
+        Animal.prototype.eat = function(name){
+          console.log(this.name + " is eating");
+        }
+        const leo = new Animal("leo", 7);
+        leo.eat();
+        
+        -------
+
+--------------------------------example 2-------------------------------
 // es5
 // functional prototype
 function Rectangle(x, y){
@@ -25,3 +70,10 @@ class Rectangle1{
 }
 var rect1 = new Rectangle1(5,6);
 console.log(rect1.perimeter1());
+
+-----------------------
+arrow function can not be constructor function and does not have this keyword
+const Animal = () => {}
+const ani = new Animal();
+Error: Animal is not constructor
+Therfore, Animal.prototype is undefined.
