@@ -1,0 +1,48 @@
+/*Implicit Binding
+Explicit Binding
+new Binding
+window Binding */
+
+//-------------------Implicit Binding 
+//-------------------Left of the dot at call time
+
+var me ={
+name:"karthik",
+sayName(){
+console.log(this.name);
+}
+}
+me.sayName();
+
+
+//-------------------Explicit Binding
+//=------------------call, apply and bind
+
+function sayName(age){
+  console.log(this.name + " " + age);
+}
+const age=56;
+var user={
+name:"karthik"
+}
+sayName.call(user,age);
+
+
+//-------------------new keyword binding
+function Animal(name, age){
+    //this = {} -----------created by new keyword  
+    this.name = name;
+    this.age = age;
+    //return this;---------created by new keyword
+}
+
+const ani = new Animal("leo",8);
+
+//-------------------window binding
+function sayName(){
+  console.log(this.name);
+}
+sayName();   // undefined as there is no name property in the window object
+window.name = "karthik";
+sayName();   // karthik
+
