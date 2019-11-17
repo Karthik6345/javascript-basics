@@ -1,0 +1,7 @@
+Babel is a transpiler which converts advanced Ecmascript features into browser compatible code.This compilation does not add any 
+property to the code.
+eg: arrow functions into plain function
+
+Polyfill converts the code with browser compatible method.
+eg: includes will be replaced by indexOf
+    Promise call would be replaced by browser compatible method.
