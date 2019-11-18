@@ -45,4 +45,16 @@ function sayName(){
 sayName();   // undefined as there is no name property in the window object
 window.name = "karthik";
 sayName();   // karthik
-
+-----------------------------------this keyword example---------------------------------------------
+let talk = function(){
+  console.log(this.sound);
+}
+let burma={
+burmaspeak : talk,
+sound: "burma speak"
+}
+let blabber = {
+blabberspeak : burma.burmaspeak,
+sound:"blabber speak"
+}
+blabber.blabberspeak()
