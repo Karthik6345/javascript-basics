@@ -1,0 +1,42 @@
+Callstack is a data structure which records where in the program we are.So, when we call a function , function declaration is pushed 
+into the stack and when the function is returned js engine will pop off the declaration from the callstack.
+
+function multiply(a, b){return a *b;}
+function square(n){return multiply(n,n);}
+funtion printSquare(){const print = square(2);console.log(print);}
+
+printSquare();
+main()->printSquare()->square()->multiply()
+---->order of push
+
+As the function returns, pop the method
+<-----------
+
+Stacktrace when error in the function chaining
+function foo(){
+throw new Error("oops")
+}
+function bar(){foo();}
+function boo(){bar();}
+boo();
+
+OP: foo 
+    bar
+    boo
+    (anonymous function)   //main
+
+
+Event loop: it always keeps track of task queue if there is any task then it checks stack to clear all the jobs if any.Once the stack
+is clear, event loop pushes the task into the stack.
+
+console.log("hi");
+setTimeout(function(){
+  console.log("in time");
+},5000);
+console.log("all done");
+
+o/p:
+hi
+all done
+in time
+
