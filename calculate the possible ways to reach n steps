@@ -1,0 +1,33 @@
+function fib(n) {
+  if (n <= 1) return n;                 //
+  return fib(n - 1) + fib(n - 2);       
+}
+
+// Returns number of ways to reach s'th stair
+function countWays(s) {
+  return fib(s + 1);                 // 4
+}
+
+console.log(countWays(3));
+--imple--
+----(1,2)(2,1)(1,1,1)
+
+----------------------------------
+to count all distinct binary strings without two consecutive 1's
+
+function countStrings(n) 
+{ 
+    var a=[], b = []; 
+    a[0] = b[0] = 1; 
+    for (var i = 1; i < n; i++) 
+    { 
+        a[i] = a[i-1] + b[i-1]; 
+        b[i] = a[i-1]; 
+    } 
+    return a[n-1] + b[n-1]; 
+} 
+
+console.log(countStrings(3));
+
+o/p:
+5
