@@ -3,3 +3,15 @@ Server Side Rendering
 PWA
 node.js
 SASS - LESS - SCSS
+
+-------------------------------------
+Promises, async and await , adv and disadv over each other and callback hell.
+Reactjs over other JS frameworks or libraries? Why Reactjs?
+explain your projects in a better way? Whats your roles and responsibility?
+Events present in PWA?
+Advantages and disadvantages of SSR? and its performance aspect?
+Implement OOPS in javascript with an example.[object/class/prototype inheritance, encapsulation, abstraction, polymorphisim]
+Explain Closure? with an example?
+Nodejs and expressjs
+
+
