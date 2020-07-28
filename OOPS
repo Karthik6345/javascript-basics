@@ -1,1 +1,4 @@
+----new keyword--------
+var person = new Person("karthik",28);
 
+//Essentially, 1) new keyword creates a new empty object. 2) Sets the value to 'this' to new empty object. 3) Calls the constructor method. 
