@@ -1,0 +1,19 @@
+class Point{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+  text(){
+    return "nin bidu guru, sakkath!!"
+  }
+  static distance(a, b){  // static keyword should always be called from class but not as its instance.
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return Math.hypot(dx, dy);
+  }
+}
+
+const p1 = new Point(5,5);
+const p2 = new Point(6,6);
+console.log(p1.text())
+console.log(Point.distance(p1,p2));  // here, distance is a utility function of Point. 
