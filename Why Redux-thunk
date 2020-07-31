@@ -1,0 +1,9 @@
+What is Redux thunk?
+1) A thunk creator, which is an action creator that returns a thunk (a.k.a. asynchronous action creators)
+2) The thunk itself, which is the function that is returned from the thunk creator and accepts dispatch and setState as arguments
+
+Why Redux thunk?
+The reason that we need to use a middleware such as Redux-Thunk is because the Redux store only supports synchronous data flow. 
+Thus, middleware to the rescue! Middleware allows for asynchronous data flow, 
+interprets anything that you dispatch and finally returns a plain object allowing the synchronous Redux data flow to resume. 
+Redux middleware can thus solve for many critical asynchronous needs (e.g., axios requests).
