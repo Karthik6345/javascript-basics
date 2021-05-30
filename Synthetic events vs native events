@@ -1,0 +1,7 @@
+React synthetic events work identically across browsers
+React event handlers are named using camelcase.
+React event handlers cannot return false to prevent default behaviour.
+React synthetic event always bubble.
+React synthetic events cannot be used in an asynchronous 
+Way unless e.persist() is called.
+Synthetic events for video works the same way as js evevnts.
