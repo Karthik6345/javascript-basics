@@ -1,0 +1,1 @@
+"thisIsATrickyOne".split(/(?=[A-Z])/));
